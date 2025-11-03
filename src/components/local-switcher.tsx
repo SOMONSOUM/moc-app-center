@@ -51,13 +51,13 @@ export const LocaleSwitcher = () => {
             countryCode={flags[locale].flag}
             title={flags[locale].flag}
           />
-          <span>{flags[locale].title}</span>
+          <span className="text-white">{flags[locale].title}</span>
         </div>
       </SelectTrigger>
       <SelectContent>
         {LOCALES.map((l) => (
           <SelectItem key={l} value={l}>
-            <div className="flex items-center gap-2 uppercase">
+            <div className="flex items-center gap-2 uppercase ">
               <ReactCountryFlag
                 svg
                 className="text-xl"
