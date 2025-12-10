@@ -1,8 +1,12 @@
+import AndroidScreen from '@/screen/androidScreen/AndroidSceen'
 import React from 'react'
 
 const AndroidPage = () => {
   return (
-    <div>AndroidPage</div>
+    <div>
+
+      <AndroidScreen />
+    </div>
   )
 }
 

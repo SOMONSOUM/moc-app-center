@@ -10,7 +10,7 @@ interface AppVersion {
   version: string
   isExpanded: boolean
 }
-const IOSScreen = () => {
+const AndroidScreen = () => {
   const [versions, setVersions] = useState<AppVersion[]>([
     { version: "1.1.100", isExpanded: true },
     { version: "1.1.099", isExpanded: false },
@@ -30,13 +30,13 @@ const IOSScreen = () => {
 
       {/* Main Content */}
       <div className="grid grid-cols-1 lg:grid-cols-2 h-screen overflow-hidden">
-        <div className="bg-gradient-to-b from-[#2980B9] to-[#9dddfc] col-span-1 flex flex-col items-center justify-center gap-6 sm:gap-8 order-2 lg:order-1 lg:sticky lg:top-0 h-auto lg:h-screen overflow-y-auto">
+        <div className="bg-[#E7F7FF] col-span-1 flex flex-col items-center justify-center gap-6 sm:gap-8 order-2 lg:order-1 lg:sticky lg:top-0 h-auto lg:h-screen overflow-y-auto">
           <Card className="w-full max-w-xs sm:max-w-sm bg-white p-4 sm:p-6 rounded-2xl shadow-2xl">
             <div className="flex flex-col items-center gap-4">
               <div className="flex items-start gap-2">
                 <Info className="w-4 sm:w-5 h-4 sm:h-5 text-gray-700 flex-shrink-0 mt-0.5" />
                 <p className="text-xs sm:text-sm text-gray-700">
-                  Open this site in your <span className="font-semibold text-blue-600">iOS</span> device
+                  Open this site in your <span className="font-semibold text-blue-600">Android</span> device
                 </p>
               </div>
 
@@ -66,7 +66,13 @@ const IOSScreen = () => {
         {/* Right Section - Scrollable */}
         <div className="col-span-1 flex flex-col gap-6 sm:gap-8 order-1 lg:order-2 overflow-y-auto h-screen ">
           {/* Main App Card */}
-          
+          <div className="bg-[#2980B9] px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+            <div className="">
+              <div className="flex items-center gap-3">
+                <img src="/moclogo.png" alt="" className="w-60" />
+              </div>
+            </div>
+          </div>
 
           {/* App Card */}
           <div className="px-4 lg:px-20">
@@ -74,7 +80,7 @@ const IOSScreen = () => {
               <div className="flex flex-row items-start gap-4 sm:gap-4 mb-4 sm:mb-6">
                 <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
                   <div className="w-16 sm:w-20 h-16 sm:h-20 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center flex-shrink-0">
-                    <img src="/apple-logo.png" alt="" className="w-10" />
+                    <img src="/android-logo.png" alt="" className="w-10" />
                   </div>
                   <div className="min-w-0">
                     <h2 className="text-xl sm:text-2xl font-bold text-gray-900">MOC Officer</h2>
@@ -83,7 +89,7 @@ const IOSScreen = () => {
                 </div>
                 <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-3 sm:px-4 rounded-lg flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap flex-shrink-0">
                   <Download className="w-3 sm:w-4 h-3 sm:h-4" />
-                  <span className="hidden sm:inline">DOWNLOAD</span> .IPA
+                  <span className="hidden sm:inline">DOWNLOAD</span> .APK
                 </Button>
               </div>
 
@@ -109,7 +115,7 @@ const IOSScreen = () => {
                 </div>
                 <div className="flex justify-between py-2 text-xs sm:text-sm">
                   <span className="font-semibold text-gray-600">PLATFORM</span>
-                  <span className="font-semibold text-gray-900">🍎 iOS</span>
+                  <span className="font-semibold text-gray-900">🤖 Android</span>
                 </div>
               </div>
             </Card>
@@ -150,4 +156,4 @@ const IOSScreen = () => {
   )
 }
 
-export default IOSScreen
+export default AndroidScreen
