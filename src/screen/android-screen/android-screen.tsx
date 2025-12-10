@@ -1,34 +1,22 @@
-"use client"
-import Image from "next/image"
-import Link from "next/link"
-import { Star, Download, Share2, ArrowLeft, Package, Calendar, Building2, Badge } from "lucide-react"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { HeroSection } from "@/components/HeroSection/HeroSection"
+"use client";
 
-interface PageProps {
-  params: Promise<{
-    slug: string
-  }>
-}
+import {
+  Star,
+  Download,
+  Share2,
+  Package,
+  Calendar,
+  Building2,
+  Badge,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import Image from "next/image";
 
-export default async function AppDetailPage({ params }: PageProps) {
-  const { slug } = await params
-  // const app = apps.find((a:any) => a.slug === slug)
-
-
+export const AndroidScreen = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#ffffff] to-[#f7fdff] ">
-      {/* App Header */}
-      <div className=" bg-[#2980B9] px-4 sm:px-6 lg:px-8 py-4">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
-          <div className="flex items-center gap-3">
-            <img src="/moclogo.png" alt="" className="w-60" />
-          </div>
-        </div>
-      </div>
-      {/* <HeroSection /> */}
+    <>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -36,8 +24,7 @@ export default async function AppDetailPage({ params }: PageProps) {
         className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8"
       >
         <div className="flex flex-col sm:flex-row gap-6 items-start">
-
-          <div className="relative h-32 w-32 flex-shrink-0">
+          <div className="relative h-32 w-32 shrink-0">
             <Image
               src={"/ios-qr-code.png"}
               alt="sd"
@@ -49,10 +36,18 @@ export default async function AppDetailPage({ params }: PageProps) {
           <div className="flex-1">
             <div className="flex items-start justify-between gap-4 flex-wrap mb-4">
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">MOC Offcer</h1>
-                <p className="text-muted-foreground text-lg">Ministry of Commerce</p>
+                <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+                  MOC Offcer
+                </h1>
+                <p className="text-muted-foreground text-lg">
+                  Ministry of Commerce
+                </p>
               </div>
-              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-muted-foreground hover:text-foreground"
+              >
                 <Share2 className="h-5 w-5" />
               </Button>
             </div>
@@ -70,7 +65,10 @@ export default async function AppDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
+            <Button
+              size="lg"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
+            >
               <Download className="h-5 w-5" />
               Download APK
             </Button>
@@ -89,14 +87,18 @@ export default async function AppDetailPage({ params }: PageProps) {
           {/* Description */}
           <Card className="p-6">
             <h2 className="text-xl font-bold text-foreground mb-4">About</h2>
-            <p className="text-muted-foreground leading-relaxed">Get accurate weather forecasts with real-time updates, severe weather alerts, and beautiful visualizations</p>
+            <p className="text-muted-foreground leading-relaxed">
+              Get accurate weather forecasts with real-time updates, severe
+              weather alerts, and beautiful visualizations
+            </p>
           </Card>
 
           {/* Screenshots */}
           <Card className="p-6">
-            <h2 className="text-xl font-bold text-foreground mb-4">Screenshots</h2>
+            <h2 className="text-xl font-bold text-foreground mb-4">
+              Screenshots
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -136,7 +138,6 @@ export default async function AppDetailPage({ params }: PageProps) {
                   className="object-cover"
                 />
               </motion.div>
-
             </div>
           </Card>
         </motion.div>
@@ -152,7 +153,7 @@ export default async function AppDetailPage({ params }: PageProps) {
             <h3 className="font-bold text-foreground mb-4">App Info</h3>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <Badge >dasd</Badge>
+                <Badge>dasd</Badge>
               </div>
 
               <div className="space-y-3 text-sm">
@@ -178,8 +179,12 @@ export default async function AppDetailPage({ params }: PageProps) {
 
           {/* Download Card */}
           <Card className="p-6 bg-primary/5 border-primary/20">
-            <h3 className="font-bold text-foreground mb-2">Ready to Download?</h3>
-            <p className="text-sm text-muted-foreground mb-4">Click the download button below to get the APK file.</p>
+            <h3 className="font-bold text-foreground mb-2">
+              Ready to Download?
+            </h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Click the download button below to get the APK file.
+            </p>
             <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
               <Download className="h-4 w-4 mr-2" />
               Download Now
@@ -187,6 +192,6 @@ export default async function AppDetailPage({ params }: PageProps) {
           </Card>
         </motion.div>
       </section>
-    </div>
-  )
-}
+    </>
+  );
+};

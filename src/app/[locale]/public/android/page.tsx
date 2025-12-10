@@ -1,13 +1,9 @@
-import AndroidScreen from '@/screen/androidScreen/AndroidSceen'
-import React from 'react'
+import { AndroidScreen } from "@/screen/android-screen/android-screen";
 
-const AndroidPage = () => {
+export default function AndroidPage() {
   return (
-    <div>
-
+    <div className="min-h-screen bg-linear-to-b from-[#ffffff] to-[#f7fdff] ">
       <AndroidScreen />
     </div>
-  )
+  );
 }
-
-export default AndroidPage

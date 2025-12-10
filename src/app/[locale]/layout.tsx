@@ -1,11 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./../globals.css";
-import {
-  AbstractIntlMessages,
-  hasLocale,
-  Locale,
-  NextIntlClientProvider,
-} from "next-intl";
+import { hasLocale, Locale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -52,7 +47,7 @@ export default async function LocaleLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
