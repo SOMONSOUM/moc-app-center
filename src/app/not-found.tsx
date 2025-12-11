@@ -2,8 +2,6 @@
 
 import Error from "next/error";
 
-// This is a catch-all page for 404 errors other than the dashboard
-
 function NotFoundPage() {
   return (
     <html lang="en" suppressHydrationWarning>

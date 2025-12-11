@@ -1,19 +1,25 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import "./../globals.css";
+import { Koh_Santepheap, Inter } from "next/font/google";
 import { hasLocale, Locale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme-provider";
 import { getTranslations } from "next-intl/server";
+import { Header } from "@/components/header";
+import { cn } from "@/lib/utils";
+import { Footer } from "@/components/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const hanuman = Koh_Santepheap({
+  weight: ["400", "700", "900"],
+  subsets: ["khmer"],
+  display: "swap",
+  variable: "--font-hanuman",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export async function generateMetadata(
@@ -43,7 +49,12 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          "flex min-h-screen flex-col bg-background text-foreground antialiased",
+          hanuman.variable,
+          inter.variable,
+          locale === "km" ? "font-hanuman" : "font-inter"
+        )}
       >
         <ThemeProvider
           attribute="class"
@@ -52,7 +63,11 @@ export default async function LocaleLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider locale={locale}>
-            {children}
+            <main className="min-h-screen bg-background">
+              <Header />
+              {children}
+              <Footer />
+            </main>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
