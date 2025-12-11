@@ -4,7 +4,7 @@ import { HeroSection } from "@/components/hero-section";
 export default function Home() {
   return (
     <>
-      <div className="py-1">
+      <div className=" bg-[#F2F2F2]">
         <HeroSection />
       </div>
       <FeaturesSection />

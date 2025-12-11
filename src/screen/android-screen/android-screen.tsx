@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Star,
   Download,
@@ -8,82 +9,178 @@ import {
   Calendar,
   Building2,
   Badge,
+  Bookmark,
+  X,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from "@/components/ui/carousel";
 
 export const AndroidScreen = () => {
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const totalImages = 6;
+  console.log(selectedImage);
+
+  const handlePrevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setSelectedImage((prev) =>
+      prev !== null ? (prev > 0 ? prev - 1 : totalImages - 1) : null
+    );
+  };
+
+  const handleNextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setSelectedImage((prev) =>
+      prev !== null ? (prev < totalImages - 1 ? prev + 1 : 0) : null
+    );
+  };
+
+  // Keyboard navigation
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (selectedImage === null) return;
+
+    if (e.key === "ArrowLeft") {
+      setSelectedImage((prev) =>
+        prev !== null ? (prev > 0 ? prev - 1 : totalImages - 1) : null
+      );
+    } else if (e.key === "ArrowRight") {
+      setSelectedImage((prev) =>
+        prev !== null ? (prev < totalImages - 1 ? prev + 1 : 0) : null
+      );
+    } else if (e.key === "Escape") {
+      setSelectedImage(null);
+    }
+  };
+
   return (
     <>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8"
+        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8"
       >
-        <div className="flex flex-col sm:flex-row gap-6 items-start">
-          <div className="relative h-32 w-32 shrink-0">
+        <div className="flex gap-6 items-start">
+          <div className="relative h-32 w-32 lg:h-32 lg:w-32 shrink-0">
             <Image
-              src={"/ios-qr-code.png"}
-              alt="sd"
+              src={"/MoC_Logo_only_01_1.svg"}
+              alt="MOC Officer"
               fill
-              className="object-cover rounded-3xl shadow-md"
+              className="object-cover rounded-2xl shadow-sm"
             />
           </div>
-
           <div className="flex-1">
-            <div className="flex items-start justify-between gap-4 flex-wrap mb-4">
-              <div>
-                <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-                  MOC Offcer
-                </h1>
-                <p className="text-muted-foreground text-lg">
-                  Ministry of Commerce
-                </p>
-              </div>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <Share2 className="h-5 w-5" />
-              </Button>
-            </div>
+            <h1 className="text-2xl lg:text-3xl font-semibold text-foreground mb-2">
+              MOC Officer
+            </h1>
+            <p className="text-primary mb-6">Ministry of Commerce</p>
 
-            <div className="flex flex-wrap gap-4 mb-6">
-              <div className="flex items-center gap-2">
-                <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                <span className="font-semibold text-foreground">4.8</span>
-                <span className="text-sm text-muted-foreground">Rating</span>
+            <div className="flex flex-wrap items-center gap-6 mb-6 text-sm">
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-1 mb-1">
+                  <span className="text-sm font-semibold">4.8</span>
+                  <Star className="h-3 w-3 fill-current" />
+                </div>
+                <p className="text-xs text-muted-foreground">70.5K reviews</p>
               </div>
-              <div className="flex items-center gap-2">
-                <Download className="h-5 w-5 text-primary" />
-                <span className="font-semibold text-foreground">4M+</span>
-                <span className="text-sm text-muted-foreground">Downloads</span>
+              <div className="text-center">
+                <p className="text-sm font-semibold mb-1">4M+</p>
+                <p className="text-xs text-muted-foreground">Downloads</p>
+              </div>
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center border rounded px-2 py-0.5 mb-1">
+                  <span className="text-xs font-semibold">3+</span>
+                </div>
+                <p className="text-xs text-muted-foreground">Rated for 3+</p>
               </div>
             </div>
-
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
-            >
-              <Download className="h-5 w-5" />
-              Download APK
-            </Button>
           </div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-4 py-5">
+          <Button
+            size="lg"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground"
+          >
+            <Download className="h-4 w-4 mr-2" />
+            Download Now
+          </Button>
+          <button className="flex items-center gap-2 text-primary text-sm font-medium">
+            <Share2 className="h-4 w-4" />
+            Share
+          </button>
+          <button className="flex items-center gap-2 text-primary text-sm font-medium">
+            <Bookmark className="h-4 w-4" />
+            Add to wishlist
+          </button>
+        </div>
+        <div className="mt-6 pt-4 border-t text-sm text-muted-foreground flex items-center gap-2">
+          <svg
+            className="h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <rect x="2" y="3" width="20" height="14" rx="2" />
+            <path d="M8 21h8M12 17v4" />
+          </svg>
+          <span>This app is available for all of IOS devices</span>
         </div>
       </motion.div>
 
       {/* Details Section */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
           className="md:col-span-2 space-y-6"
         >
+          <Carousel className="w-full">
+            <CarouselContent className="-ml-1">
+              {Array.from({ length: 6 }).map((_, index) => (
+                <CarouselItem key={index} className="pl-1 basis-1/4 sm:basis-1/4 md:basis-1/4 lg:basis-1/4 xl:basis-1/5"
+                >
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    className="relative h-60 sm:h-80 cursor-pointer group overflow-hidden  border-gray-200 hover:border-primary transition-all duration-300"
+                    onClick={() => setSelectedImage(index)}
+                  >
+                    <Image
+                      src={`/covers/cover-app-${index + 1}.png`}
+                      alt={`cover-${index + 1}`}
+                      fill
+                      className="object-contain "
+                    />
+                    {/* <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-opacity duration-300" /> */}
+
+                    {/* Hover overlay text */}
+                    {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="bg-white/90 text-xs font-medium px-3 py-1 rounded-full shadow-lg">
+                        Click to preview
+                      </span>
+                    </div> */}
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="ml-8" />
+            <CarouselNext className="mr-8" />
+          </Carousel>
+
           {/* Description */}
           <Card className="p-6">
             <h2 className="text-xl font-bold text-foreground mb-4">About</h2>
@@ -91,54 +188,6 @@ export const AndroidScreen = () => {
               Get accurate weather forecasts with real-time updates, severe
               weather alerts, and beautiful visualizations
             </p>
-          </Card>
-
-          {/* Screenshots */}
-          <Card className="p-6">
-            <h2 className="text-xl font-bold text-foreground mb-4">
-              Screenshots
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.2 + 0.1 }}
-                className="relative h-80 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
-              >
-                <Image
-                  src={"/ios-qr-code.png"}
-                  alt={` screenshot`}
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.2 + 0.1 }}
-                className="relative h-80 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
-              >
-                <Image
-                  src={"/ios-qr-code.png"}
-                  alt={` screenshot`}
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.2 + 0.1 }}
-                className="relative h-80 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
-              >
-                <Image
-                  src={"/ios-qr-code.png"}
-                  alt={` screenshot`}
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
-            </div>
           </Card>
         </motion.div>
 
@@ -176,22 +225,93 @@ export const AndroidScreen = () => {
               </div>
             </div>
           </Card>
-
-          {/* Download Card */}
-          <Card className="p-6 bg-primary/5 border-primary/20">
-            <h3 className="font-bold text-foreground mb-2">
-              Ready to Download?
-            </h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              Click the download button below to get the APK file.
-            </p>
-            <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-              <Download className="h-4 w-4 mr-2" />
-              Download Now
-            </Button>
-          </Card>
         </motion.div>
       </section>
+
+      {/* Lightbox Preview Modal */}
+      <AnimatePresence>
+        {selectedImage !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+            onClick={() => setSelectedImage(null)}
+            onKeyDown={handleKeyDown}
+            tabIndex={0}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 z-50 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-2 transition-colors text-white"
+              aria-label="Close preview"
+            >
+              <X className="h-6 w-6" />
+            </button>
+
+            {/* Previous Button */}
+            <button
+              onClick={handlePrevImage}
+              className="absolute left-4 z-50 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-colors text-white hidden sm:flex items-center justify-center"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+
+            {/* Image Container */}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="relative max-w-lg max-h-[90vh] w-full flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-full h-full flex items-center justify-center">
+                <Image
+                  src={`/covers/cover-app-${selectedImage + 1}.png`}
+                  alt={`Screenshot ${selectedImage + 1}`}
+                  width={400}
+                  height={800}
+                  className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
+                />
+              </div>
+
+              {/* Image Counter */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium">
+                {selectedImage + 1} / {totalImages}
+              </div>
+
+              {/* Mobile Navigation Buttons */}
+              <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-4 sm:hidden">
+                <button
+                  onClick={handlePrevImage}
+                  className="bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-colors text-white"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  onClick={handleNextImage}
+                  className="bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-colors text-white"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Next Button */}
+            <button
+              onClick={handleNextImage}
+              className="absolute right-4 z-50 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-colors text-white hidden sm:flex items-center justify-center"
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
