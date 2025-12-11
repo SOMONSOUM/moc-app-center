@@ -9,7 +9,7 @@ export const NotFoundError = () => {
   const router = useRouter();
 
   return (
-    <div className="m-atuo flex h-full w-full flex-col items-center justify-center gap-2">
+    <div className="flex min-h-[calc(100vh-400px)] w-full flex-col items-center justify-center gap-2 m-auto">
       <h1 className="text-[7rem] font-bold leading-tight">404</h1>
       <span className="font-medium">{t("404_title")}</span>
       <p className="text-center text-muted-foreground">

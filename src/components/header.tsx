@@ -1,25 +1,26 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { LocaleSwitcher } from "./local-switcher";
 
 export const Header = () => {
   return (
     <nav className="sticky top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center gap-3">
+        <Link
+          href="/"
+          className="flex items-center gap-3 hover:opacity-80 transition"
+        >
           <Image
-            src="/MoC_Logo_only_01_1.svg"
+            src="/moc-logo.svg"
             alt="Ministry of Commerce"
-            width={40}
-            height={40}
-            className="rounded-lg"
+            width={160}
+            height={160}
             priority
           />
-          <span className="font-semibold text-foreground hidden sm:inline">
-            Ministry of Commerce
-          </span>
-        </div>
+        </Link>
+
         <LocaleSwitcher />
       </div>
     </nav>

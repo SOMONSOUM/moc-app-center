@@ -42,11 +42,12 @@ export default async function LocaleLayout({
   children,
   params,
 }: LayoutProps<"/[locale]">) {
-  // Ensure that the incoming `locale` is valid
   const { locale } = await params;
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
@@ -64,24 +65,22 @@ export default async function LocaleLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider locale={locale}>
-            <main className="min-h-screen bg-background">
-              <Toaster
-                richColors
-                toastOptions={{
-                  duration: 3000,
-                  style: {
-                    fontFamily:
-                      locale === "km"
-                        ? "var(--font-koh-santepheap)"
-                        : "var(--font-koh-santepheap)",
-                    fontSize: "11pt",
-                  },
-                }}
-              />
-              <Header />
-              {children}
-              <Footer />
-            </main>
+            <Toaster
+              richColors
+              toastOptions={{
+                duration: 3000,
+                style: {
+                  fontFamily:
+                    locale === "km"
+                      ? "var(--font-koh-santepheap)"
+                      : "var(--font-koh-santepheap)",
+                  fontSize: "11pt",
+                },
+              }}
+            />
+            <Header />
+            <div className="flex-1">{children}</div>
+            <Footer />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
