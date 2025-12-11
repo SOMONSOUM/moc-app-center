@@ -3,6 +3,12 @@
     "title": "Welcome to Next.js 16 with Next-Intl!"
   },
   "LocaleLayout": {
-    "title": "Next-Intl v16 Example"
+    "title": "MOC App store center"
+  },
+  "Error": {
+    "404_title": "404: Not Found",
+    "404_message": "The page you are looking for doesn't exist.",
+    "go_back": "Go back",
+    "back_to_home": "Back to home"
   }
 }

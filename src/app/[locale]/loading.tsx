@@ -3,9 +3,7 @@ export default function Loading() {
     <div className="inset-0 flex min-h-screen items-center justify-center p-4">
       <div className="text-center">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold leading-[1.2]">
-            ប្រព័ន្ធកំពុងដំណើរការ
-          </h1>
+          <h1 className="text-4xl font-bold leading-[1.2]">កំពុងដំណើរការ</h1>
         </div>
 
         <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-primary" />

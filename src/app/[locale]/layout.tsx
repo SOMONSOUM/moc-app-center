@@ -54,7 +54,7 @@ export default async function LocaleLayout({
           "flex min-h-screen flex-col bg-background text-foreground antialiased",
           kohSantepheap.variable,
           inter.variable,
-          locale === "km" ? "font-koh-santepheap" : "font-inter"
+          locale === "km" ? "font-koh-santepheap" : "font-koh-santepheap"
         )}
       >
         <ThemeProvider
@@ -72,8 +72,8 @@ export default async function LocaleLayout({
                   style: {
                     fontFamily:
                       locale === "km"
-                        ? "var(--font-hanuman)"
-                        : "var(--font-inter)",
+                        ? "var(--font-koh-santepheap)"
+                        : "var(--font-koh-santepheap)",
                     fontSize: "11pt",
                   },
                 }}
