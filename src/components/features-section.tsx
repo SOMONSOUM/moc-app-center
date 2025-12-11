@@ -5,7 +5,7 @@ import { Card } from "./ui/card";
 
 export const FeaturesSection = () => {
   return (
-    <section className="px-6 md:px-12 lg:px-16 py-10 bg-muted/30">
+    <section id="learn-more" className="px-6 md:px-12 lg:px-16 py-10 bg-muted/30">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">
