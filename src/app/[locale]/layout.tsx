@@ -7,12 +7,13 @@ import { getTranslations } from "next-intl/server";
 import { Header } from "@/components/header";
 import { cn } from "@/lib/utils";
 import { Footer } from "@/components/footer";
+import { Toaster } from "@/components/ui/sonner";
 
-const hanuman = Koh_Santepheap({
+const kohSantepheap = Koh_Santepheap({
   weight: ["400", "700", "900"],
   subsets: ["khmer"],
   display: "swap",
-  variable: "--font-hanuman",
+  variable: "--font-koh-santepheap",
 });
 
 const inter = Inter({
@@ -51,9 +52,9 @@ export default async function LocaleLayout({
       <body
         className={cn(
           "flex min-h-screen flex-col bg-background text-foreground antialiased",
-          hanuman.variable,
+          kohSantepheap.variable,
           inter.variable,
-          locale === "km" ? "font-hanuman" : "font-inter"
+          locale === "km" ? "font-koh-santepheap" : "font-inter"
         )}
       >
         <ThemeProvider
@@ -64,6 +65,19 @@ export default async function LocaleLayout({
         >
           <NextIntlClientProvider locale={locale}>
             <main className="min-h-screen bg-background">
+              <Toaster
+                richColors
+                toastOptions={{
+                  duration: 3000,
+                  style: {
+                    fontFamily:
+                      locale === "km"
+                        ? "var(--font-hanuman)"
+                        : "var(--font-inter)",
+                    fontSize: "11pt",
+                  },
+                }}
+              />
               <Header />
               {children}
               <Footer />
