@@ -106,12 +106,6 @@ export const AndroidScreen = () => {
                 <p className="text-sm font-semibold mb-1">4M+</p>
                 <p className="text-xs text-muted-foreground">Downloads</p>
               </div>
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center border rounded px-2 py-0.5 mb-1">
-                  <span className="text-xs font-semibold">3+</span>
-                </div>
-                <p className="text-xs text-muted-foreground">Rated for 3+</p>
-              </div>
             </div>
           </div>
         </div>
@@ -128,10 +122,6 @@ export const AndroidScreen = () => {
             <Share2 className="h-4 w-4" />
             Share
           </button>
-          <button className="flex items-center gap-2 text-primary text-sm font-medium">
-            <Bookmark className="h-4 w-4" />
-            Add to wishlist
-          </button>
         </div>
         <div className="mt-6 pt-4 border-t text-sm text-muted-foreground flex items-center gap-2">
           <svg
@@ -144,7 +134,7 @@ export const AndroidScreen = () => {
             <rect x="2" y="3" width="20" height="14" rx="2" />
             <path d="M8 21h8M12 17v4" />
           </svg>
-          <span>This app is available for all of IOS devices</span>
+          <span>This app is available for all of android devices</span>
         </div>
       </motion.div>
 
@@ -201,10 +191,6 @@ export const AndroidScreen = () => {
           <Card className="p-6">
             <h3 className="font-bold text-foreground mb-4">App Info</h3>
             <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Badge>dasd</Badge>
-              </div>
-
               <div className="space-y-3 text-sm">
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <Package className="h-4 w-4" />
