@@ -112,27 +112,24 @@ export const AndroidScreen = () => {
 
         <div className="flex flex-wrap items-center gap-4 py-5">
           <Button
-            onClick={() => {
-              // Show your custom dialog first
-              if (confirm("Download MoeSpace APK from moc.gov.kh?")) {
-                const link = document.createElement('a');
-                link.href = "https://link.moc.gov.kh/GASZPRNWEHGWNXKLC";
-                link.download = "moespace.apk";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                // Browser warning will still appear after this
-              }
-            }}
+            size="lg"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground"
+            asChild
           >
-            Download Now
+            <a
+              href="https://link.moc.gov.kh/GASZPRNWEHGWNXKLC"
+              download="moc_officer.apk"
+            >
+              <Download className="h-4 w-4 mr-2" />
+              Download Now
+            </a>
           </Button>
           <button className="flex items-center gap-2 text-primary text-sm font-medium"
             onClick={() => {
               const shareData = {
                 title: 'MOC Officer App',
                 text: 'Check out the MOC Officer App from the Ministry of Commerce, Cambodia!',
-                url: 'https://link.moc.gov.kh/GASZPRNWEHGWNXKLC',
+                url: 'https://moc-app-center.vercel.app/km',
               };
               if (navigator.share) {
                 navigator.share(shareData);
