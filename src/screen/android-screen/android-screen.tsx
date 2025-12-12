@@ -28,19 +28,27 @@ import {
 
 export const AndroidScreen = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const totalImages = 6;
+
+  const images = [
+    "/covers/cover-app-1.png",
+    "/covers/cover-app-2.png",
+    "/covers/cover-app-3.png",
+    "/covers/cover-app-4.png",
+    "/covers/cover-app-5.png",
+    "/covers/cover-app-6.png",
+  ];
 
   const handlePrevImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     setSelectedImage((prev) =>
-      prev !== null ? (prev > 0 ? prev - 1 : totalImages - 1) : null
+      prev !== null ? (prev > 0 ? prev - 1 : images.length - 1) : null
     );
   };
 
   const handleNextImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     setSelectedImage((prev) =>
-      prev !== null ? (prev < totalImages - 1 ? prev + 1 : 0) : null
+      prev !== null ? (prev < images.length - 1 ? prev + 1 : 0) : null
     );
   };
 
@@ -50,11 +58,11 @@ export const AndroidScreen = () => {
 
     if (e.key === "ArrowLeft") {
       setSelectedImage((prev) =>
-        prev !== null ? (prev > 0 ? prev - 1 : totalImages - 1) : null
+        prev !== null ? (prev > 0 ? prev - 1 : images.length - 1) : null
       );
     } else if (e.key === "ArrowRight") {
       setSelectedImage((prev) =>
-        prev !== null ? (prev < totalImages - 1 ? prev + 1 : 0) : null
+        prev !== null ? (prev < images.length - 1 ? prev + 1 : 0) : null
       );
     } else if (e.key === "Escape") {
       setSelectedImage(null);
@@ -149,7 +157,7 @@ export const AndroidScreen = () => {
         >
           <Carousel className="w-full">
             <CarouselContent className="-ml-1">
-              {Array.from({ length: 6 }).map((_, index) => (
+              {images.map((image, index) => (
                 <CarouselItem
                   key={index}
                   className="pl-1 basis-1/4 sm:basis-1/4 md:basis-1/4 lg:basis-1/4 xl:basis-1/5"
@@ -158,11 +166,11 @@ export const AndroidScreen = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
-                    className="relative h-60 sm:h-80 cursor-pointer group overflow-hidden  border-gray-200 hover:border-primary transition-all duration-300"
+                    className="relative h-60 sm:h-80 cursor-pointer group overflow-hidden border-gray-200 hover:border-primary transition-all duration-300"
                     onClick={() => setSelectedImage(index)}
                   >
                     <Image
-                      src={`/covers/cover-app-${index + 1}.png`}
+                      src={image}
                       alt={`cover-${index + 1}`}
                       fill
                       className="object-contain "
@@ -266,7 +274,7 @@ export const AndroidScreen = () => {
               </div>
 
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium">
-                {selectedImage + 1} / {totalImages}
+                {selectedImage + 1} / {images.length}
               </div>
 
               <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-4 sm:hidden">
