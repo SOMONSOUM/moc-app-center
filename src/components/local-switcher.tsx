@@ -57,7 +57,7 @@ export const LocaleSwitcher = () => {
       <SelectContent>
         {LOCALES.map((l) => (
           <SelectItem key={l} value={l}>
-            <div className="flex items-center gap-2 uppercase ">
+            <div className="flex items-center gap-2 uppercase">
               <ReactCountryFlag
                 svg
                 className="text-xl "
