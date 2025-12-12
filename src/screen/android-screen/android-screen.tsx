@@ -114,11 +114,25 @@ export const AndroidScreen = () => {
           <Button
             size="lg"
             className="bg-primary hover:bg-primary/90 text-primary-foreground"
+            onClick={() => window.open("https://link.moc.gov.kh/GASZPRNWEHGWNXKLC", "_blank")}
           >
             <Download className="h-4 w-4 mr-2" />
             Download Now
           </Button>
-          <button className="flex items-center gap-2 text-primary text-sm font-medium">
+          <button className="flex items-center gap-2 text-primary text-sm font-medium"
+            onClick={() => {
+              const shareData = {
+                title: 'MOC Officer App',
+                text: 'Check out the MOC Officer App from the Ministry of Commerce, Cambodia!',
+                url: 'https://link.moc.gov.kh/GASZPRNWEHGWNXKLC',
+              };
+              if (navigator.share) {
+                navigator.share(shareData);
+              } else {
+                alert('Web Share API not supported');
+              }
+            }}
+          >
             <Share2 className="h-4 w-4" />
             Share
           </button>

@@ -13,7 +13,7 @@ export const GenerateQrCode: React.FC = () => {
             <div className="p-2 border-2 rounded-xl border-primary/40 bg-primary/5 hover:border-primary/50 hover:bg-primary/10 transition-colors">
               <div className="p-2 rounded-xl">
                 <div className="relative">
-                  <QRCodeSVG value="https://google.com" size={300} level="H" />
+                  <QRCodeSVG value="https://link.moc.gov.kh/GASZPRNWEHGWNXKLC" size={300} level="H" />
                   <Image
                     fetchPriority="high"
                     src="/MoC_Logo_only_01_1.svg"
@@ -34,7 +34,7 @@ export const GenerateQrCode: React.FC = () => {
             <div className="p-2 border-2 rounded-xl border-primary/40 bg-primary/5 hover:border-primary/50 hover:bg-primary/10 transition-colors">
               <div className="p-2 rounded-xl">
                 <div className="relative">
-                  <QRCodeSVG value="https://google.com" size={250} level="H" />
+                  <QRCodeSVG value="https://link.moc.gov.kh/GASZPRNWEHGWNXKLC" size={250} level="H" />
                   <Image
                     fetchPriority="high"
                     src="/MoC_Logo_only_01_1.svg"
