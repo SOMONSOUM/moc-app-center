@@ -16,10 +16,20 @@ export const NotFoundError = () => {
         {t.rich("404_message", { br: () => <br /> })}
       </p>
       <div className="mt-6 flex gap-4">
-        <Button variant="outline" onClick={() => router.back()}>
+        <Button
+          size="lg"
+          variant="outline"
+          className="border-border text-foreground hover:bg-gray-100 bg-transparent hover:text-black"
+          onClick={() => router.back()}
+        >
           {t("go_back")}
         </Button>
-        <Button onClick={() => router.replace("/")}>{t("back_to_home")}</Button>
+        <Button
+          className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
+          onClick={() => router.replace("/")}
+        >
+          {t("back_to_home")}
+        </Button>
       </div>
     </div>
   );

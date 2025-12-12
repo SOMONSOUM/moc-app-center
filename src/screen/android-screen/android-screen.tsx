@@ -23,13 +23,12 @@ import {
   CarouselContent,
   CarouselItem,
   CarouselNext,
-  CarouselPrevious
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 export const AndroidScreen = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const totalImages = 6;
-  console.log(selectedImage);
 
   const handlePrevImage = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -83,7 +82,9 @@ export const AndroidScreen = () => {
             <h1 className="text-2xl lg:text-3xl font-semibold text-foreground mb-2">
               MOC Officer
             </h1>
-            <p className="text-primary mb-6">Ministry of Commerce</p>
+            <p className="text-primary mb-6">
+              Ministry of Commerce. (Cambodia)
+            </p>
 
             <div className="flex flex-wrap items-center gap-6 mb-6 text-sm">
               <div className="text-center">
@@ -139,7 +140,6 @@ export const AndroidScreen = () => {
         </div>
       </motion.div>
 
-      {/* Details Section */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -150,7 +150,9 @@ export const AndroidScreen = () => {
           <Carousel className="w-full">
             <CarouselContent className="-ml-1">
               {Array.from({ length: 6 }).map((_, index) => (
-                <CarouselItem key={index} className="pl-1 basis-1/4 sm:basis-1/4 md:basis-1/4 lg:basis-1/4 xl:basis-1/5"
+                <CarouselItem
+                  key={index}
+                  className="pl-1 basis-1/4 sm:basis-1/4 md:basis-1/4 lg:basis-1/4 xl:basis-1/5"
                 >
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -165,14 +167,6 @@ export const AndroidScreen = () => {
                       fill
                       className="object-contain "
                     />
-                    {/* <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-opacity duration-300" /> */}
-
-                    {/* Hover overlay text */}
-                    {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="bg-white/90 text-xs font-medium px-3 py-1 rounded-full shadow-lg">
-                        Click to preview
-                      </span>
-                    </div> */}
                   </motion.div>
                 </CarouselItem>
               ))}
@@ -181,7 +175,6 @@ export const AndroidScreen = () => {
             <CarouselNext className="mr-8" />
           </Carousel>
 
-          {/* Description */}
           <Card className="p-6">
             <h2 className="text-xl font-bold text-foreground mb-4">About</h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -191,7 +184,6 @@ export const AndroidScreen = () => {
           </Card>
         </motion.div>
 
-        {/* Sidebar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -228,7 +220,6 @@ export const AndroidScreen = () => {
         </motion.div>
       </section>
 
-      {/* Lightbox Preview Modal */}
       <AnimatePresence>
         {selectedImage !== null && (
           <motion.div
@@ -240,7 +231,6 @@ export const AndroidScreen = () => {
             onKeyDown={handleKeyDown}
             tabIndex={0}
           >
-            {/* Close Button */}
             <button
               onClick={() => setSelectedImage(null)}
               className="absolute top-4 right-4 z-50 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-2 transition-colors text-white"
@@ -249,7 +239,6 @@ export const AndroidScreen = () => {
               <X className="h-6 w-6" />
             </button>
 
-            {/* Previous Button */}
             <button
               onClick={handlePrevImage}
               className="absolute left-4 z-50 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-colors text-white hidden sm:flex items-center justify-center"
@@ -258,7 +247,6 @@ export const AndroidScreen = () => {
               <ChevronLeft className="h-6 w-6" />
             </button>
 
-            {/* Image Container */}
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -277,12 +265,10 @@ export const AndroidScreen = () => {
                 />
               </div>
 
-              {/* Image Counter */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium">
                 {selectedImage + 1} / {totalImages}
               </div>
 
-              {/* Mobile Navigation Buttons */}
               <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-4 sm:hidden">
                 <button
                   onClick={handlePrevImage}
@@ -301,7 +287,6 @@ export const AndroidScreen = () => {
               </div>
             </motion.div>
 
-            {/* Next Button */}
             <button
               onClick={handleNextImage}
               className="absolute right-4 z-50 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-colors text-white hidden sm:flex items-center justify-center"
