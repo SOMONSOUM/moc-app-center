@@ -112,18 +112,19 @@ export const AndroidScreen = () => {
 
         <div className="flex flex-wrap items-center gap-4 py-5">
           <Button
-            size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground"
             onClick={() => {
-              const link = document.createElement('a');
-              link.href = "https://link.moc.gov.kh/GASZPRNWEHGWNXKLC";
-              link.download = "moespace.apk"; 
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
+              // Show your custom dialog first
+              if (confirm("Download MoeSpace APK from moc.gov.kh?")) {
+                const link = document.createElement('a');
+                link.href = "https://link.moc.gov.kh/GASZPRNWEHGWNXKLC";
+                link.download = "moespace.apk";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                // Browser warning will still appear after this
+              }
             }}
           >
-            <Download className="h-4 w-4 mr-2" />
             Download Now
           </Button>
           <button className="flex items-center gap-2 text-primary text-sm font-medium"
