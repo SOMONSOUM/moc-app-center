@@ -114,7 +114,14 @@ export const AndroidScreen = () => {
           <Button
             size="lg"
             className="bg-primary hover:bg-primary/90 text-primary-foreground"
-            onClick={() => window.open("https://link.moc.gov.kh/GASZPRNWEHGWNXKLC", "_blank")}
+            onClick={() => {
+              const link = document.createElement('a');
+              link.href = "https://link.moc.gov.kh/GASZPRNWEHGWNXKLC";
+              link.download = "moespace.apk"; 
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }}
           >
             <Download className="h-4 w-4 mr-2" />
             Download Now
